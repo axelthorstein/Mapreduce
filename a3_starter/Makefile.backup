@@ -1,0 +1,15 @@
+	CC=gcc
+	CFLAGS=-Wall -std=c99 -Werror
+	DEPS = mapreduce.h
+	OBJ = mapreduce.o master.o
+
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+mapreduce: $(OBJ)
+	gcc -o $@ $^ $(CFLAGS)
+
+.PHONY: clean
+
+clean:
+	rm -f .o
